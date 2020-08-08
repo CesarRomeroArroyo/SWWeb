@@ -18,20 +18,23 @@ export class HomeComponent implements OnInit {
     private api: ApiService
   ) {
     this.search = "";
-    this.animated =false;
+    this.animated = false;
   }
 
   ngOnInit() {
     this.initTranslation();
-    this.api.getFilms().subscribe(resp => this.films = resp);    
+    this.api.getFilms().subscribe(resp => this.films = resp);
   }
 
   async initTranslation() {
     await this.translateService.init();
   }
 
-  animatedText(){
+  animatedText() {
     this.animated = !this.animated;
   }
 
+  searchFilm(param) {
+    this.api.getFilms(param).subscribe(films => this.films = films);
+  }
 }
