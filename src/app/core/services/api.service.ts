@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { environment } from '@environments/environment';
+import { CharacterInterface } from '@interface/character.interface';
+import { FilmInterface } from '@interface/film.interface';
 
 @Injectable({
 	providedIn: 'root'
@@ -14,9 +16,9 @@ export class ApiService {
 
 	constructor(private http: HttpClient) { }
 
-	getFilms(): Observable<any> {
+	getFilms(): Observable<FilmInterface[]> {
 		return this.http.get(`${this.url}/films/`).pipe(map((result: any) => {
-			let films: any[] = [];
+			let films: FilmInterface[] = [];
 			result.results.forEach(element => {
 				let film = {
 					name: element.title,
@@ -31,9 +33,9 @@ export class ApiService {
 		}));
 	}
 
-	getCharacters(): Observable<any> {
+	getCharacters(): Observable<CharacterInterface[]> {
 		return this.http.get(`${this.url}/people/`).pipe(map((result : any) => {
-			let characters: any[] = [];
+			let characters: CharacterInterface[] = [];
 			result.results.forEach(element => {
 				let character = {
 					name: element.name,
