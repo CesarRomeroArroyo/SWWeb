@@ -24,8 +24,6 @@
     padding: var(--size-20);
     background: var(--color-grey);
     color: var(--color-white);
-    //border-radius: var(--size-20);
-    
     overflow-y: scroll;
     z-index: 9999;
     position: fixed;
@@ -82,7 +80,7 @@
                 
                 &__text{
                     position: relative;
-                    animation: crawl 18s infinite;
+                    animation: crawl 20s infinite;
                 }
             }
             &__btn{

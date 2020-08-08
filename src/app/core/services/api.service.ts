@@ -19,15 +19,14 @@ export class ApiService {
 	getFilms(): Observable<FilmInterface[]> {
 		return this.http.get(`${this.url}/films/`).pipe(map((result: any) => {
 			let films: FilmInterface[] = [];
-			result.results.forEach(element => {
-				let film = {
+			films = result.results.map(element => {
+				return {
 					name: element.title,
 					episode: element.episode_id,
 					director: element.director,
 					characters: element.characters,
 					opening_crawl: element.opening_crawl
 				}
-				films.push(film);
 			});
 			films.sort(function (prev, next) {
 				if (prev.episode > next.episode) {
@@ -37,24 +36,24 @@ export class ApiService {
 					return -1
 				}
 				return 0;
-			});
+			}); 
 			console.log(films);
 			return films;
 		}));
 	}
 
-	getCharacters(): Observable<CharacterInterface[]> {
-		return this.http.get(`${this.url}/people/`).pipe(map((result: any) => {
+	getCharacters(character): Observable<CharacterInterface[]> {
+		return this.http.get(`${this.url}/people/${character}`).pipe(map((result: any) => {
 			let characters: CharacterInterface[] = [];
-			result.results.forEach(element => {
-				let character = {
+			characters = result.results.map(element => {
+				return {
 					name: element.name,
 					eye_color: element.eye_color,
 					gender: element.gender,
 					films: element.films
 				}
-				characters.push(character);
 			});
+			console.log(characters);
 			return characters;
 		}));
 	}
