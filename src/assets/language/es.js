@@ -4,5 +4,6 @@
     "EPISODE": "Episodio",
     "DIRECTOR": "Director",
     "CHARACTERS": "Actores",
-    "NOFOUND": "No encontrada"
+    "NOFOUND": "No encontrada",
+    "ASSOCIATED_MOVIE": "Pelicula Asociada"
 }

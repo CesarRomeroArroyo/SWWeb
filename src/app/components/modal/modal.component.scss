@@ -1,0 +1,14 @@
+.crawl{
+    width: 50%;
+    z-index: 99999;
+    font-size: var(--size-12);
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    
+    &__text{
+        position: relative;
+        animation: crawl 20s infinite;
+    }
+}

@@ -17,7 +17,7 @@
                 {{film.opening_crawl}}
             </div>
         </div>
-        <div class="film__data__btn" (click)="goCharacter(film)">
+        <div class="film__data__btn" *ngIf="showlink" (click)="goCharacter(film)">
             {{translate.translate("CHARACTERS")}}
         </div>
     </div>

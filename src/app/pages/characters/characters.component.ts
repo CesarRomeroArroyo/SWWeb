@@ -22,11 +22,13 @@ export class CharactersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.state.setData({search: true});
     this.state.getObservable().subscribe((data: any) => {
       if(data.film){
         this.film = data.film;
         console.log(this.film);
-        this.getCharacters();
+        if(data.search)
+          this.getCharacters();
       }
       else {
         this.router.navigate(["home"]);
@@ -35,11 +37,17 @@ export class CharactersComponent implements OnInit {
   }
 
   getCharacters(){
-    
     this.api.getCharacters(this.film.characters).subscribe((chars)=> {
       console.log(chars);
       this.characters = chars;
     });
   }
+
+  showCrawl(film){
+    this.state.setData({search: false});
+    this.state.setData({showModal: true});
+    this.state.setData({crawl: film.opening_crawl});
+  }
+  
 
 }

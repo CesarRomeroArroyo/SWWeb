@@ -1,18 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilmComponent } from './film/film.component';
+import { ModalComponent } from './modal/modal.component';
 
 
 
 @NgModule({
   declarations: [
-    FilmComponent
+    FilmComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    FilmComponent
+    FilmComponent,
+    ModalComponent
   ]
 })
 export class ComponentsModule { }

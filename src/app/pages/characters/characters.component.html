@@ -1,16 +1,33 @@
 <div class="header">
     <div class="header__title">
-        {{film.name}}
+        {{film.name}} {{translate.translate("CHARACTERS")}}
     </div>
     
 </div>
 <div class="content">
-    <div class="content__film" *ngFor="let char of characters">
-        <div class="content__film__img">
-            <i class="fa fa-user"></i>
-        </div>
+    <div class="content__film" *ngFor="let char of characters">        
         <div class="content__film__data">
-            {{char.name}}
+            <div class="content__film__data__info">
+                <div class="content__film__data__info__name">
+                    <i class="fa fa-user"></i> {{char.name}}
+                </div>
+                <div class="content__film__data__info__eye">
+                    <i class="fa fa-eye" aria-hidden="true"></i> {{char.eye_color}}
+                </div>
+                <div class="content__film__data__info__gender">
+                    <i class="fa fa-venus-mars" aria-hidden="true"></i> {{char.gender}}
+                </div>
+            </div>
+            {{translate.translate("ASSOCIATED_MOVIE")}}
+            <div class="content__film__data__films">
+                
+                
+                    <div class="content__film__data__films__info" (click)="showCrawl(film)"  *ngFor="let film of char.films | async">
+                        <i class="fa fa-film" aria-hidden="true"></i> {{film.name}}
+                    </div>
+                
+                
+            </div>
         </div>
     </div>
 </div>
