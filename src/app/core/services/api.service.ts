@@ -16,8 +16,9 @@ export class ApiService {
 
 	constructor(private http: HttpClient) { }
 
-	getFilms(): Observable<FilmInterface[]> {
-		return this.http.get(`${this.url}/films/`).pipe(map((result: any) => {
+	getFilms(search?): Observable<FilmInterface[]> {
+		search = search ? `?search=${search}` : '';
+		return this.http.get(`${this.url}/films/${search}`).pipe(map((result: any) => {
 			let films: FilmInterface[] = [];
 			films = result.results.map(element => {
 				return {
@@ -55,6 +56,32 @@ export class ApiService {
 			});
 			console.log(characters);
 			return characters;
+		}));
+	}
+
+	searchFilms(search) {
+		return this.http.get(`${this.url}/films/?search=${search}`).pipe(map((result: any) => {
+			let films: FilmInterface[] = [];
+			result.results.forEach(element => {
+				let film = {
+					name: element.title,
+					episode: element.episode_id,
+					director: element.director,
+					characters: element.characters,
+					opening_crawl: element.opening_crawl
+				}
+				films.push(film);
+			});
+			films.sort(function (prev, next) {
+				if (prev.episode > next.episode) {
+					return 1;
+				}
+				if (prev.episode < next.episode) {
+					return -1
+				}
+				return 0;
+			});
+			return films;
 		}));
 	}
 }

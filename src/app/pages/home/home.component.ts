@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.initTranslation();
-    this.api.getFilms().subscribe(resp => this.films = resp);    
+    this.api.getFilms().subscribe(resp => this.films = resp);
   }
 
   async initTranslation() {
@@ -37,4 +37,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate(["character"])
   }
 
+  searchFilm(param) {
+    this.api.getFilms(param).subscribe(films => this.films = films);
+  }
 }

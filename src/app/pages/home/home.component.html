@@ -3,7 +3,7 @@
         {{translate.translate("TITLE")}}
     </div>
     <div class="header__search">
-        <input type="search" name="search"  placeholder="{{translate.translate('SEARCH')}}">
+        <input type="search" name="search"  placeholder="{{translate.translate('SEARCH')}}" #search (keyup)="searchFilm(search.value)">
     </div>
 </div>
 <div class="content">
