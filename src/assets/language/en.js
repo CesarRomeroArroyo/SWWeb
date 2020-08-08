@@ -3,6 +3,7 @@
     "SEARCH": "Search",
     "EPISODE": "Episode",
     "DIRECTOR": "Director",
-    "CHARACTERS": "Characters"
+    "CHARACTERS": "Characters",
+    "NOFOUND": "No found"
  
 }

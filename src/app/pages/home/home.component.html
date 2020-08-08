@@ -3,14 +3,15 @@
         {{translate.translate("TITLE")}}
     </div>
     <div class="header__search">
-        <input type="search" name="search"  placeholder="{{translate.translate('SEARCH')}}" #search (keyup)="searchFilm(search.value)">
+        <input type="search" name="search" placeholder="{{translate.translate('SEARCH')}}" #search
+            (keyup)="searchFilm(search.value)">
     </div>
 </div>
-<div class="content">
+<div class="content" *ngIf="films.length > 0">
     <div class="content__film" *ngFor="let film of films">
         <div class="content__film__img">
             <img src="../../../assets/images/{{film.episode}}.png" alt="">
-        </div> 
+        </div>
         <div class="content__film__data">
             <div class="content__film__data__title">
                 {{film.name}}
@@ -29,6 +30,10 @@
             <div class="content__film__data__btn" (click)="goCharacter(film)">
                 {{translate.translate("CHARACTERS")}}
             </div>
-        </div> 
+        </div>
     </div>
+</div>
+ 
+<div class="content" id="filmsNone" *ngIf="films.length == 0">
+    {{translate.translate("NOFOUND")}}
 </div>

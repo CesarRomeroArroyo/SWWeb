@@ -3,5 +3,6 @@
     "SEARCH": "Buscar",
     "EPISODE": "Episodio",
     "DIRECTOR": "Director",
-    "CHARACTERS": "Actores"
+    "CHARACTERS": "Actores",
+    "NOFOUND": "No encontrada"
 }
