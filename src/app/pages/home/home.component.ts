@@ -2,6 +2,8 @@ import { ApiService } from './../../core/services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from 'src/app/core/services/translate.service';
 import { FilmInterface } from 'src/app/interface/film.interface';
+import { Router } from '@angular/router';
+import { StateApp } from 'src/app/core/services/state.service';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +13,14 @@ import { FilmInterface } from 'src/app/interface/film.interface';
 export class HomeComponent implements OnInit {
   search: string;
   films: FilmInterface[];
-  animated: boolean;
   constructor(
     public translate: TranslateService,
     private translateService: TranslateService,
-    private api: ApiService
+    private api: ApiService,
+    private router: Router,
+    private state: StateApp
   ) {
     this.search = "";
-    this.animated = false;
   }
 
   ngOnInit() {
@@ -30,8 +32,9 @@ export class HomeComponent implements OnInit {
     await this.translateService.init();
   }
 
-  animatedText() {
-    this.animated = !this.animated;
+  goCharacter(film){
+    this.state.setData({film: film});
+    this.router.navigate(["character"])
   }
 
   searchFilm(param) {

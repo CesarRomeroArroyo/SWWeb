@@ -12,7 +12,7 @@
             <img src="../../../assets/images/{{film.episode}}.png" alt="">
         </div> 
         <div class="content__film__data">
-            <div class="content__film__data__title" (click)="animated()">
+            <div class="content__film__data__title">
                 {{film.name}}
             </div>
             <div class="content__film__data__director">
@@ -22,12 +22,13 @@
                 {{translate.translate("EPISODE")}}: {{film.episode}}
             </div>
             <div class="content__film__data__crawl">
-                <div class="content__film__data__crawl__text" >
+                <div class="content__film__data__crawl__text">
                     {{film.opening_crawl}}
                 </div>
-                
             </div>
-            
+            <div class="content__film__data__btn" (click)="goCharacter(film)">
+                {{translate.translate("CHARACTERS")}}
+            </div>
         </div> 
     </div>
 </div>
