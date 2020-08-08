@@ -22,9 +22,14 @@ export class CharactersComponent implements OnInit {
 
   ngOnInit() {
     this.state.getObservable().subscribe((data: any) => {
-      this.film = data.film;
-      console.log(this.film);
-      this.getCharacters();
+      if(data.film){
+        this.film = data.film;
+        console.log(this.film);
+        this.getCharacters();
+      }
+      else {
+        this.router.navigate(["home"]);
+      }
     });
   }
 
