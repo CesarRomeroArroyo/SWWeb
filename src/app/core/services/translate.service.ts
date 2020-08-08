@@ -14,6 +14,7 @@ export class TranslateService {
   public init(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
         const language = this.languageService.getCurrentLanguage();
+        
         const languageFilePath: string = 'assets/language/' + language + '.js';
         this.http.get(languageFilePath).toPromise().then(res => {
           //localStorage.setItem(language.toLowerCase(), JSON.stringify(res));
