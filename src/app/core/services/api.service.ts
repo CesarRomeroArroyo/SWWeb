@@ -62,29 +62,4 @@ export class ApiService {
 			return characters;
 		})); 
 	}
-
-	searchFilms(search) {
-		return this.http.get(`${this.url}/films/?search=${search}`).pipe(map((result: any) => {
-			let films: FilmInterface[] = [];
-			films = result.results.map(element => {
-				return {
-					name: element.title,
-					episode: element.episode_id,
-					director: element.director,
-					characters: element.characters,
-					opening_crawl: element.opening_crawl
-				}
-			});
-			films.sort(function (prev, next) {
-				if (prev.episode > next.episode) {
-					return 1;
-				}
-				if (prev.episode < next.episode) {
-					return -1
-				}
-				return 0;
-			});
-			return films;
-		}));
-	}
 }
