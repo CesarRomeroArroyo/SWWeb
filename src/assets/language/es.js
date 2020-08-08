@@ -1,5 +1,5 @@
 {
-    header: {
-        title: "Hello, what movie do you want to know about?"
-    }
+    "TITLE": "Hola, de que pelicula quieres informacion?",
+    "SEARCH": "Buscar"
+ 
 }
