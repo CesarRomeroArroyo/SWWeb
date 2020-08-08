@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   films: FilmInterface[];
   constructor(
     public translate: TranslateService,
-    private translateService: TranslateService,
     private api: ApiService,
     private router: Router,
     private state: StateApp
@@ -29,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   async initTranslation() {
-    await this.translateService.init();
+    await this.translate.init();
   }
 
   goCharacter(film){
