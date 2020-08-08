@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  secretKey: "SWW3B_K3Y"
+  secretKey: "SWW3B_K3Y",
+  api: 'https://swapi.dev/api'
 };
 
 /*
