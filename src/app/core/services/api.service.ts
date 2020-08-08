@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators'
 
 import { environment } from '../../../environments/environment';
@@ -43,10 +43,14 @@ export class ApiService {
 		}));
 	}
 
-	getCharacters(character): Observable<CharacterInterface[]> {
-		return this.http.get(`${this.url}/people/${character}`).pipe(map((result: any) => {
+	getCharacters(characters: string[]): Observable<any[]> {
+		const petitions = [];
+		characters.forEach((char)=>{
+			petitions.push(this.http.get(char));
+		});
+		return forkJoin(petitions).pipe(map((result: any) => {
 			let characters: CharacterInterface[] = [];
-			characters = result.results.map(element => {
+			characters = result.map(element => {
 				return {
 					name: element.name,
 					eye_color: element.eye_color,
@@ -56,6 +60,6 @@ export class ApiService {
 			});
 			console.log(characters);
 			return characters;
-		}));
+		})); 
 	}
 }
