@@ -29,13 +29,22 @@ export class ApiService {
 				}
 				films.push(film);
 			});
+			films.sort(function (prev, next) {
+				if (prev.episode > next.episode) {
+					return 1;
+				}
+				if (prev.episode < next.episode) {
+					return -1
+				}
+				return 0;
+			});
 			console.log(films);
 			return films;
 		}));
 	}
 
 	getCharacters(): Observable<CharacterInterface[]> {
-		return this.http.get(`${this.url}/people/`).pipe(map((result : any) => {
+		return this.http.get(`${this.url}/people/`).pipe(map((result: any) => {
 			let characters: CharacterInterface[] = [];
 			result.results.forEach(element => {
 				let character = {
