@@ -7,12 +7,24 @@
     </div>
 </div>
 <div class="content">
-    <div class="content__film">
+    <div class="content__film" *ngFor="let film of films">
         <div class="content__film__img">
-            <img src="" alt="">
+            <img src="../../../assets/images/{{film.episode}}.png" alt="">
         </div> 
         <div class="content__film__data">
-Espisodio 1
+            <div class="content__film__data__title">
+                {{film.name}}
+            </div>
+            <div class="content__film__data__director">
+                {{translate.translate("DIRECTOR")}}: {{film.director}}
+            </div>
+            <div class="content__film__data__episode">
+                {{translate.translate("EPISODE")}}: {{film.episode}}
+            </div>
+            <div class="content__film__data__crawl">
+                {{film.opening_crawl}}
+            </div>
+            
         </div> 
     </div>
 </div>

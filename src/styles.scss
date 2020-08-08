@@ -6,7 +6,9 @@
     --color-marine: #5c9fd2;
     //Sizes
     --size-10: 10px;
+    --size-12: 12px;
     --size-16: 16px;
+    --size-18: 18px;
     --size-20: 20px;
     --size-40: 40px;
 }
@@ -34,6 +36,8 @@ input:not([type="button"]):not([type="submit"]):not([type="checkbox"]) {
 	padding-right: 10px;
     color: black;
     border-radius: 20px;
+    background: rgba($color: #ffffff, $alpha: 0.5);
+    color: white;
 }
 
 input[type="checkbox"] {

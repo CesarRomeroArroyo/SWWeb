@@ -1,6 +1,7 @@
 import { ApiService } from './../../core/services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from 'src/app/core/services/translate.service';
+import { FilmInterface } from 'src/app/interface/film.interface';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,7 @@ import { TranslateService } from 'src/app/core/services/translate.service';
 })
 export class HomeComponent implements OnInit {
   search: string;
+  films: FilmInterface[];
   constructor(
     public translate: TranslateService,
     private translateService: TranslateService,
@@ -19,8 +21,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.initTranslation();
-    this.api.getFilms().subscribe(resp => console.log(resp));
-    this.api.getCharacters().subscribe(resp => console.log(resp));
+    this.api.getFilms().subscribe(resp => this.films = resp);
+    //this.api.getCharacters().subscribe(resp => this.films = resp);
   }
 
   async initTranslation() {
