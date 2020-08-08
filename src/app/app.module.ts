@@ -4,7 +4,7 @@ import * as sjcl from 'sjcl';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-
+import {HttpClientModule} from "@angular/common/http";
 
 const secretKey = environment.secretKey;
 
@@ -54,7 +54,8 @@ Storage.prototype.getItem = function(key) {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
