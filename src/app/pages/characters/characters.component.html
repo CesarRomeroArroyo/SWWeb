@@ -5,28 +5,12 @@
     
 </div>
 <div class="content">
-    <div class="content__film" *ngFor="let film of films">
+    <div class="content__film" *ngFor="let char of characters">
         <div class="content__film__img">
-            <img src="../../../assets/images/{{film.episode}}.png" alt="">
-        </div> 
+            <i class="fa fa-user"></i>
+        </div>
         <div class="content__film__data">
-            <div class="content__film__data__title">
-                {{film.name}}
-            </div>
-            <div class="content__film__data__director">
-                {{translate.translate("DIRECTOR")}}: {{film.director}}
-            </div>
-            <div class="content__film__data__episode">
-                {{translate.translate("EPISODE")}}: {{film.episode}}
-            </div>
-            <div class="content__film__data__crawl">
-                <div class="content__film__data__crawl__text">
-                    {{film.opening_crawl}}
-                </div>
-            </div>
-            <div class="content__film__data__btn" (click)="goCharacter(film)">
-                {{translate.translate("CHARACTERS")}}
-            </div>
-        </div> 
+            {{char.name}}
+        </div>
     </div>
 </div>

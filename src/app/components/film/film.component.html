@@ -1,0 +1,24 @@
+<div class="film" *ngIf="film">
+    <div class="film__img">
+        <img src="../../../assets/images/{{film.episode}}.png" alt="">
+    </div>
+    <div class="film__data">
+        <div class="film__data__title">
+            {{film.name}}
+        </div>
+        <div class="film__data__director">
+            {{translate.translate("DIRECTOR")}}: {{film.director}}
+        </div>
+        <div class="film__data__episode">
+            {{translate.translate("EPISODE")}}: {{film.episode}}
+        </div>
+        <div class="film__data__crawl">
+            <div class="film__data__crawl__text">
+                {{film.opening_crawl}}
+            </div>
+        </div>
+        <div class="film__data__btn" (click)="goCharacter(film)">
+            {{translate.translate("CHARACTERS")}}
+        </div>
+    </div>
+</div>

@@ -54,7 +54,7 @@ Storage.prototype.getItem = function (key) {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

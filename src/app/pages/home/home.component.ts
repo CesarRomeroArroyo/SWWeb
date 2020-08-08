@@ -31,11 +31,6 @@ export class HomeComponent implements OnInit {
     await this.translate.init();
   }
 
-  goCharacter(film){
-    this.state.setData({film: film});
-    this.router.navigate(["character"])
-  }
-
   searchFilm(param) {
     this.api.getFilms(param).subscribe(films => this.films = films);
   }

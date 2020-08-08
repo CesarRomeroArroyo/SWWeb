@@ -13,6 +13,7 @@ import { CharacterInterface } from 'src/app/interface/character.interface';
 })
 export class CharactersComponent implements OnInit {
   film: FilmInterface;
+  characters: CharacterInterface[];
   constructor(
     public translate: TranslateService,
     private api: ApiService,
@@ -36,7 +37,8 @@ export class CharactersComponent implements OnInit {
   getCharacters(){
     
     this.api.getCharacters(this.film.characters).subscribe((chars)=> {
-      console.log(chars)
+      console.log(chars);
+      this.characters = chars;
     });
   }
 
