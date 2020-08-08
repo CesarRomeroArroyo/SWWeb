@@ -1,3 +1,4 @@
+
 .header{
     height: 10%;
     display: flex;
@@ -72,25 +73,28 @@
                 height: 35px;
             }
             &__crawl{
-                z-index: 99;
+                z-index: 99999;
                 font-size: var(--size-12);
                 height: auto;
                 position: relative;
                 overflow: hidden;
                 text-align: center;
-                animation: crawl 7s infinite;
+                
+                &__text{
+                    position: relative;
+                    
+                }
             }
         }
     }
 }
 
-@keyframes crawl {
-    0% {
-    top: 0px;
-    transform: rotateX(20deg)  translateZ(0);
-  }
-    100% { 
-    top: -90px;
-    transform: rotateX(25deg) translateZ(-60px);
-  }
+.crawlAnimation{
+    animation: crawl 18s infinite;
 }
+
+
+
+
+
+

@@ -11,22 +11,27 @@ import { FilmInterface } from 'src/app/interface/film.interface';
 export class HomeComponent implements OnInit {
   search: string;
   films: FilmInterface[];
+  animated: boolean;
   constructor(
     public translate: TranslateService,
     private translateService: TranslateService,
     private api: ApiService
   ) {
     this.search = "";
+    this.animated =false;
   }
 
   ngOnInit() {
     this.initTranslation();
-    this.api.getFilms().subscribe(resp => this.films = resp);
-    //this.api.getCharacters().subscribe(resp => this.films = resp);
+    this.api.getFilms().subscribe(resp => this.films = resp);    
   }
 
   async initTranslation() {
     await this.translateService.init();
+  }
+
+  animatedText(){
+    this.animated = !this.animated;
   }
 
 }

@@ -68,6 +68,32 @@ select {
 	padding-left: 10px;
 	padding-right: 10px;
 	font-family: "Roboto Condensed", sans-serif;
-  color: black;
-  margin-bottom: 10px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+@keyframes crawl {
+    0% {
+    top: 50px;
+    transform: rotateX(20deg)  translateZ(0);
+  }
+    100% { 
+    top: -190px;
+    transform: rotateX(25deg) translateZ(-60px);
+  }
+}
+
+$breakpoint-phones: 411px;
+@media (max-width: $breakpoint-phones) {
+ 
+    @keyframes crawl {
+        0% {
+        top: 50px;
+        transform: rotateX(20deg)  translateZ(0);
+      }
+        100% { 
+        top: -270px;
+        transform: rotateX(25deg) translateZ(-60px);
+      }
+    }
 }
