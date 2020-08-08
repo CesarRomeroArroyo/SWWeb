@@ -1,6 +1,6 @@
 
 .header{
-    height: 10%;
+    height: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -21,15 +21,15 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: var(--size-40) var(--size-20);
+    padding: var(--size-20);
     background: var(--color-grey);
     color: var(--color-white);
-    border-top-left-radius: var(--size-20);
-    border-top-right-radius: var(--size-20);
+    //border-radius: var(--size-20);
+    
     overflow-y: scroll;
     z-index: 9999;
-    position: relative;
-    bottom: -50px;
+    position: fixed;
+    bottom: 0px;
     &__film{
         width: 100%;
         height: auto;
@@ -70,7 +70,7 @@
                 z-index: 999999;
                 background: var(--color-white);
                 position: relative;
-                height: 35px;
+                height: 50px;
             }
             &__crawl{
                 z-index: 99999;
@@ -82,17 +82,33 @@
                 
                 &__text{
                     position: relative;
-                    
+                    animation: crawl 18s infinite;
                 }
+            }
+            &__btn{
+                z-index: 999999;
+                position: absolute;
+                top: 40px;
+                right: 0px;
+                background: var(--color-red);
+                color: var(--color-white);
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                padding: var(--size-10);
+                border-radius: var(--size-10);
             }
         }
     }
 }
 
-.crawlAnimation{
-    animation: crawl 18s infinite;
+@media (max-width: 411px) {
+    .content {
+        &__film{
+            flex-direction: column;
+        }
+    }
 }
-
 
 
 

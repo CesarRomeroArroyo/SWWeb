@@ -4,6 +4,7 @@
     --color-white: #ffffff;
     --color-grey: #2c3948;
     --color-marine: #5c9fd2;
+    --color-red: #b91d1d;
     //Sizes
     --size-10: 10px;
     --size-12: 12px;
@@ -12,6 +13,8 @@
     --size-20: 20px;
     --size-40: 40px;
 }
+
+
 
 html, 
 body {
@@ -83,12 +86,10 @@ select {
   }
 }
 
-$breakpoint-phones: 411px;
-@media (max-width: $breakpoint-phones) {
- 
+@media (max-width: 411px) {
     @keyframes crawl {
         0% {
-        top: 50px;
+        top: 0px;
         transform: rotateX(20deg)  translateZ(0);
       }
         100% { 

@@ -2,6 +2,7 @@
     "TITLE": "Hello, what movie do you want to know about?",
     "SEARCH": "Search",
     "EPISODE": "Episode",
-    "DIRECTOR": "Director"
+    "DIRECTOR": "Director",
+    "CHARACTERS": "Characters"
  
 }

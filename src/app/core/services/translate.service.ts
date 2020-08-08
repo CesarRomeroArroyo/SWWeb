@@ -14,13 +14,19 @@ export class TranslateService {
   public init(): Promise<any> {
     return new Promise<any>((resolve, reject) => {
         const language = this.languageService.getCurrentLanguage();
-        
-        const languageFilePath: string = 'assets/language/' + language + '.js';
-        this.http.get(languageFilePath).toPromise().then(res => {
-          //localStorage.setItem(language.toLowerCase(), JSON.stringify(res));
-          this.engine = res;
+        const translate = localStorage.getItem(language.toLowerCase());
+        if(translate){
+          this.engine = JSON.parse(translate);
           return resolve(this.engine);
-        });
+        } else {
+          const languageFilePath: string = 'assets/language/' + language + '.js';
+          this.http.get(languageFilePath).toPromise().then(res => {
+            localStorage.setItem(language.toLowerCase(), JSON.stringify(res));
+            this.engine = res;
+            return resolve(this.engine);
+          });
+        }
+          
     });
   }
 
