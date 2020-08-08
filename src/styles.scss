@@ -3,7 +3,7 @@
     //Colors
     --color-white: #ffffff;
     --color-grey: #2c3948;
-
+    --color-marine: #5c9fd2;
     //Sizes
     --size-10: 10px;
     --size-16: 16px;
@@ -20,7 +20,7 @@ body {
 }
 
 body {
-    background: #5c9fd2;
+    background: var(--color-marine);
     font-family: 'Montserrat', sans-serif;
     
 }

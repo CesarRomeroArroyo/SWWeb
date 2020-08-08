@@ -25,6 +25,18 @@
     &__film{
         width: 30%;
         height: 150px;
+        background: var(--color-white);
+        color: var(--color-marine);
+        border-radius: var(--size-10);
         border: 1px solid white;
+        display: flex;
+        flex-direction: row;
+        padding: var(--size-16);
+        &__img{
+            flex: 2;
+        }
+        &__data{
+            flex: 4;
+        }
     }
 }
