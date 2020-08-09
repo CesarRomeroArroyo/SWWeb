@@ -14,6 +14,16 @@ import { CharacterInterface } from 'src/app/interface/character.interface';
 export class CharactersComponent implements OnInit {
   film: FilmInterface;
   characters: CharacterInterface[];
+
+  films: FilmInterface[] = [];
+  filmSelected: FilmInterface = {
+    name: '',
+    characters: [],
+    director: '',
+    episode: 0,
+    opening_crawl: ''
+  }
+
   constructor(
     public translate: TranslateService,
     private api: ApiService,
@@ -22,21 +32,42 @@ export class CharactersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.init();
+  }
+
+  init() {
     this.state.setData({search: true});
     this.state.getObservable().subscribe((data: any) => {
-      if(data.film){
+      if (data.film) {
         this.film = data.film;
-        if(data.search)
+        console.log(this.film);
+        if (data.search)
           this.getCharacters();
       }
       else {
         this.router.navigate(["home"]);
       }
     });
+    this.uploadCombo();
   }
 
-  getCharacters(){
-    this.api.getCharacters(this.film.characters).subscribe((chars)=> {
+  uploadCombo() {
+    this.api.getFilms().subscribe(result => {
+      this.films = result;
+      this.films.unshift({
+        name: 'Seleccionar pelicula',
+        characters: [],
+        director: '',
+        episode: 0,
+        opening_crawl: ''
+      });
+      this.filmSelected = this.films[0];
+    });
+  }
+
+  getCharacters() {
+    this.api.getCharacters(this.film.characters).subscribe((chars) => {
+      console.log(chars);
       this.characters = chars;
     });
   }
@@ -46,6 +77,9 @@ export class CharactersComponent implements OnInit {
     this.state.setData({showModal: true, crawl: film.opening_crawl});
     
   }
-  
+
+  searchEyes() { }
+  searchGender() { }
+  searchFilms(e) { console.log(e); }
 
 }

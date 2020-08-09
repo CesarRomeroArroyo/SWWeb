@@ -12,6 +12,22 @@
         margin-bottom: var(--size-16);
         font-size: var(--size-40);
     }
+    &__search {
+        display: flex;
+        > input {
+            margin: 0px 16px;
+            flex: auto;
+        }
+
+        @media screen and (max-width: 411px) {
+            flex-wrap: wrap;
+            justify-content: center;
+            > input {
+                width: 48%;
+                margin: 2px 2px;
+            }
+        }
+    }
 }
 .content {
     height: 70%;
