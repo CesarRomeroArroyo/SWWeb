@@ -7,10 +7,10 @@
             (keyup)="searchFilm(search.value)">
     </div>
 </div>
-<div class="content" *ngIf="films.length > 0">
-    <app-film [film]="film"  *ngFor="let film of films"></app-film>
+<div class="content" *ngIf="films?.length > 0">
+    <app-film [film]="film" [showlink]="true"  *ngFor="let film of films"></app-film>
 </div>
  
-<div class="content" id="filmsNone" *ngIf="films.length == 0">
+<div class="content" id="filmsNone" *ngIf="films?.length == 0">
     {{translate.translate("NOFOUND")}}
 </div>

@@ -10,6 +10,7 @@
     &__title{
         width: 80%;
         margin-bottom: var(--size-16);
+        font-size: var(--size-40);
     }
     &__search {
         display: flex;
@@ -53,25 +54,32 @@
         margin: var(--size-10);
         position: relative;
         z-index: 999999;
-        &__img{
-            width: 100%;
-            height: 10%;
-            text-align: center;
-        }
+        text-align: center;
         &__data{
             width: 100%;
-            height: 90%;
+            display: flex;
+            flex-direction: column;
+            &__info{
+                width: 100%;
+                font-size: var(--size-14);
+
+                &__name{
+                    font-size: var(--size-20);
+                }
+            }
+            &__films{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                &__info{
+                    width: 100%;
+                }
+                
+            }
         }
     }
 }
 
-@media (max-width: 411px) {
-    .content {
-        &__film{
-            flex-direction: column;
-        }
-    }
-}
 
 
 

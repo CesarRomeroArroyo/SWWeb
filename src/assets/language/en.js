@@ -7,6 +7,7 @@
     "NOFOUND": "No found",
     "COLOR_EYES": "Eyes color",
     "GENDER": "Gender",
-    "FILMS": "Films"
+    "FILMS": "Films",
+    "ASSOCIATED_MOVIE": "Associated Movie"
  
 }

@@ -36,11 +36,13 @@ export class CharactersComponent implements OnInit {
   }
 
   init() {
+    this.state.setData({search: true});
     this.state.getObservable().subscribe((data: any) => {
       if (data.film) {
         this.film = data.film;
         console.log(this.film);
-        this.getCharacters();
+        if (data.search)
+          this.getCharacters();
       }
       else {
         this.router.navigate(["home"]);
@@ -70,7 +72,14 @@ export class CharactersComponent implements OnInit {
     });
   }
 
+  showCrawl(film) {
+    this.state.setData({ search: false });
+    this.state.setData({ showModal: true });
+    this.state.setData({ crawl: film.opening_crawl });
+  }
+
   searchEyes() { }
   searchGender() { }
   searchFilms(e) { console.log(e); }
+
 }

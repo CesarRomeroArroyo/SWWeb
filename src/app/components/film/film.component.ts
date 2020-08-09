@@ -12,6 +12,7 @@ import { StateApp } from 'src/app/core/services/state.service';
 })
 export class FilmComponent implements OnInit {
   @Input() film : FilmInterface;
+  @Input() showlink : boolean;
   constructor(
     public translate: TranslateService,
     private api: ApiService,

@@ -55,11 +55,32 @@ export class ApiService {
 					name: element.name,
 					eye_color: element.eye_color,
 					gender: element.gender,
-					films: element.films
+					films: this.getFilmsByCharacter(element.films),
+					filmFilter: element.films
 				}
 			});
 			console.log(characters);
 			return characters;
+		})); 
+	}
+
+	getFilmsByCharacter(films){
+		const petitions = [];
+		films.forEach((film)=>{
+			petitions.push(this.http.get(film));
+		});
+		return forkJoin(petitions).pipe(map((result: any) => {
+			let films: FilmInterface[] = [];
+			films = result.map(element => {
+				return {
+					name: element.title,
+					episode: element.episode_id,
+					director: element.director,
+					opening_crawl: element.opening_crawl
+				}
+			});
+			console.log(films);
+			return films;
 		})); 
 	}
 }

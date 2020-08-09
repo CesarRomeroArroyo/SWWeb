@@ -7,5 +7,6 @@
     "NOFOUND": "No encontrada",
     "COLOR_EYES": "Color de ojos",
     "GENDER": "Genero",
-    "FILMS": "Peliculas"
+    "FILMS": "Peliculas",
+    "ASSOCIATED_MOVIE": "Pelicula Asociada"
 }
