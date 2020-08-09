@@ -43,7 +43,7 @@ export class ApiService {
 		}));
 	}
 
-	getCharacters(characters: string[]): Observable<any[]> {
+	getCharacters(characters: string[]): Observable<CharacterInterface[]> {
 		const petitions = [];
 		characters.forEach((char)=>{
 			petitions.push(this.http.get(char));
@@ -63,7 +63,7 @@ export class ApiService {
 		})); 
 	}
 
-	getFilmsByCharacter(films){
+	getFilmsByCharacter(films): Observable<FilmInterface[]>{
 		const petitions = [];
 		films.forEach((film)=>{
 			petitions.push(this.http.get(film));
@@ -79,7 +79,6 @@ export class ApiService {
 					url: element.url
 				}
 			});
-			// console.log(films);
 			return films;
 		})); 
 	}

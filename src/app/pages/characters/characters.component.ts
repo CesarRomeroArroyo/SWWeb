@@ -101,7 +101,6 @@ export class CharactersComponent implements OnInit{
     this.registerNumber = (this.characterShow) ? this.characterShow.length : 0;
     this.pagesNumber = Math.ceil((this.registerNumber / 10));
 		this.dataGrid = (this.characterShow) ? this.characterShow.slice(this.currentPage, this.nextPage) : [];
-		console.log(this.characterShow);
 	}
 
 	onNextPage() {

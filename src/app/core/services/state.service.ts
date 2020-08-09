@@ -21,8 +21,6 @@ export class StateApp {
         keyValue.forEach((key) => {
             this.data['state'][key] = value[key];
         })
-        
-        console.log("setData => ", this.data);
         this.subject.next(this.data['state']);
     }
 
