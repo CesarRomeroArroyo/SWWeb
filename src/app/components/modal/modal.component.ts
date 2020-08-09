@@ -25,7 +25,7 @@ export class ModalComponent implements OnInit {
 
   hideModal(){
     this.show = false;
-    this.state.setData({search: true, showModal: false, crawl: ""});
+    this.state.setData({search: false, showModal: false, crawl: ""});
   }
 
 }
