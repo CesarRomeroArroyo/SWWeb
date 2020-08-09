@@ -30,12 +30,12 @@ export class CharactersComponent implements OnInit{
 	searchEyesText: string = '';
 	searchGenderText: string = '';
 
-	public pageRegister: number;
-	public pagesNumber: number;
-	public registerNumber: number;
-	public actualPage: number;
-	public currentPage: number;
-	public nextPage: number;
+	pageRegister: number;
+	pagesNumber: number;
+	registerNumber: number;
+	actualPage: number;
+	currentPage: number;
+	nextPage: number;
 
 	constructor(
 		public translate: TranslateService,
