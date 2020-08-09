@@ -85,3 +85,23 @@
         }
     }
 }
+
+.paginatorContainer {
+    padding: 16px;
+    background: white;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: black;
+}
+
+.pageLeft {
+    margin-right: 10px;
+    color: black;
+}
+.pageRight {
+    margin-left: 10px;
+    color: black;
+}
