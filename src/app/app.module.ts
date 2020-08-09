@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { FormsModule } from "@angular/forms";
 
-
 const secretKey = environment.secretKey;
 
 Storage.prototype._setItem = Storage.prototype.setItem;

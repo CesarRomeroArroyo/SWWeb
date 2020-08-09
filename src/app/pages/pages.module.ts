@@ -7,6 +7,7 @@ import { CharactersComponent } from '../pages/characters/characters.component';
 import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
 
+
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'character', component: CharactersComponent },

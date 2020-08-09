@@ -14,6 +14,7 @@ import { CharacterInterface } from 'src/app/interface/character.interface';
 export class CharactersComponent implements OnInit {
   film: FilmInterface;
   characters: CharacterInterface[];
+  characterTem: CharacterInterface[];
 
   films: FilmInterface[] = [];
   filmSelected: FilmInterface = {
@@ -36,7 +37,7 @@ export class CharactersComponent implements OnInit {
   }
 
   init() {
-    this.state.setData({search: true});
+    this.state.setData({ search: true });
     this.state.getObservable().subscribe((data: any) => {
       if (data.film) {
         this.film = data.film;
@@ -69,17 +70,31 @@ export class CharactersComponent implements OnInit {
     this.api.getCharacters(this.film.characters).subscribe((chars) => {
       console.log(chars);
       this.characters = chars;
+      this.characterTem = chars
     });
   }
 
-  showCrawl(film){
-    this.state.setData({search: false});
-    this.state.setData({showModal: true, crawl: film.opening_crawl});
-    
+  showCrawl(film) {
+    this.state.setData({ search: false });
+    this.state.setData({ showModal: true, crawl: film.opening_crawl });
   }
 
-  searchEyes() { }
-  searchGender() { }
+  searchEyes(searchText: string) {
+    searchText = searchText.toLowerCase();
+    this.characterTem = this.characters.filter(result => {
+      return result.eye_color.toLowerCase().includes(searchText);
+    });
+    console.log(this.characters);
+  }
+
+  searchGender(searchText: string) {
+    searchText = searchText.toLowerCase();
+    this.characterTem = this.characters.filter(result => {
+      return result.gender.toLowerCase().includes(searchText);
+    });
+    console.log(this.characters);
+  }
+
   searchFilms(e) { console.log(e); }
 
 }

@@ -79,7 +79,7 @@ export class ApiService {
 					opening_crawl: element.opening_crawl
 				}
 			});
-			console.log(films);
+			// console.log(films);
 			return films;
 		})); 
 	}
