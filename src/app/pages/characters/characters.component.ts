@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StateApp } from 'src/app/core/services/state.service';
 import { FilmInterface } from 'src/app/interface/film.interface';
 import { TranslateService } from 'src/app/core/services/translate.service';
@@ -11,7 +11,7 @@ import { CharacterInterface } from 'src/app/interface/character.interface';
 	templateUrl: './characters.component.html',
 	styleUrls: ['./characters.component.scss']
 })
-export class CharactersComponent implements OnInit{
+export class CharactersComponent implements OnInit {
 	film: FilmInterface;
 	characters: CharacterInterface[] = [];
 	characterShow: CharacterInterface[] = [];
@@ -64,8 +64,8 @@ export class CharactersComponent implements OnInit{
 				this.router.navigate(["home"]);
 			}
 		});
-    this.uploadCombo();
-    
+		this.uploadCombo();
+
 	}
 
 	uploadCombo() {
@@ -88,7 +88,7 @@ export class CharactersComponent implements OnInit{
 			this.characters = chars;
 			this.characterShow = this.characters;
 			this.state.setData({ search: false, showLoading: false });
-      this.setDataGrid();
+			this.setDataGrid();
 		});
 	}
 
@@ -97,9 +97,9 @@ export class CharactersComponent implements OnInit{
 	}
 
 	setDataGrid() {
-    this.pageRegister = 10;
-    this.registerNumber = (this.characterShow) ? this.characterShow.length : 0;
-    this.pagesNumber = Math.ceil((this.registerNumber / 10));
+		this.pageRegister = 10;
+		this.registerNumber = (this.characterShow) ? this.characterShow.length : 0;
+		this.pagesNumber = Math.ceil((this.registerNumber / 10));
 		this.dataGrid = (this.characterShow) ? this.characterShow.slice(this.currentPage, this.nextPage) : [];
 	}
 
@@ -135,7 +135,7 @@ export class CharactersComponent implements OnInit{
 		} else {
 			this.characterShow = this.characters;
 		}
-    this.initializateGrid();
+		this.initializateGrid();
 	}
 
 	searchGender(searchText: string) {
@@ -143,12 +143,13 @@ export class CharactersComponent implements OnInit{
 			this.searchEyesText = '';
 			searchText = searchText.toLowerCase();
 			this.characterShow = this.characters.filter(result => {
-				return result.gender.toLowerCase().indexOf(searchText) >= 0;
+				return result.gender.toLowerCase() == (searchText);
 			});
 		} else {
+			console.log(this.characterShow);
 			this.characterShow = this.characters;
-    }
-    this.initializateGrid();
+		}
+		this.initializateGrid();
 	}
 
 	searchFilms(e) {
@@ -158,14 +159,14 @@ export class CharactersComponent implements OnInit{
 			this.characterShow = this.characters.filter((result: any) => {
 				return result.filmFilter.indexOf(e.url) >= 0;
 			});
-    }
-    this.initializateGrid();
-  }
-  
-  initializateGrid(){
-    this.actualPage = 1;
-    this.currentPage = 0;
-    this.nextPage = 10;
-    this.setDataGrid();
-  }
+		}
+		this.initializateGrid();
+	}
+
+	initializateGrid() {
+		this.actualPage = 1;
+		this.currentPage = 0;
+		this.nextPage = 10;
+		this.setDataGrid();
+	}
 }
