@@ -28,4 +28,8 @@ export class FilmComponent implements OnInit {
     this.router.navigate(["character"])
   }
 
+  showCrawl(film) {
+		this.state.setData({ search: false, showModal: true, crawl: film.opening_crawl });
+	}
+
 }

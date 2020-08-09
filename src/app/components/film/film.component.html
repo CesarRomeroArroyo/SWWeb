@@ -3,7 +3,7 @@
         <img src="../../../assets/images/{{film.episode}}.png" alt="">
     </div>
     <div class="film__data">
-        <div class="film__data__title">
+        <div class="film__data__title" (click)="showCrawl(film)">
             {{film.name}}
         </div>
         <div class="film__data__director">
