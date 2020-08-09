@@ -6,9 +6,9 @@
         {{film?.name}} {{translate.translate("CHARACTERS")}}
     </div>
     <div class="header__search">
-        <input type="search" name="search" placeholder="{{translate.translate('COLOR_EYES')}}"
+        <input type="text" name="search" placeholder="{{translate.translate('COLOR_EYES')}}"
             [(ngModel)]="searchEyesText" (keyup)="searchEyes(searchEyesText)">
-        <input type="search" name="search" placeholder="{{translate.translate('GENDER')}}"
+        <input type="text" name="search" placeholder="{{translate.translate('GENDER')}}"
             [(ngModel)]="searchGenderText" (keyup)="searchGender(searchGenderText)">
         <div *ngIf="films">
             <select [(ngModel)]="filmSelected" (change)="searchFilms(filmSelected)">
