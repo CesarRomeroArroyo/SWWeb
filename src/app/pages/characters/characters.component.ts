@@ -87,7 +87,6 @@ export class CharactersComponent implements OnInit {
 		this.api.getCharacters(this.film.characters).subscribe((chars) => {
 			this.characters = chars;
 			this.characterShow = this.characters;
-			this.state.setData({ search: false, showLoading: false });
 			this.setDataGrid();
 		});
 	}
@@ -100,7 +99,8 @@ export class CharactersComponent implements OnInit {
 		this.pageRegister = 10;
 		this.registerNumber = (this.characterShow) ? this.characterShow.length : 0;
 		this.pagesNumber = Math.ceil((this.registerNumber / 10));
-		this.dataGrid = (this.characterShow) ? this.characterShow.slice(this.currentPage, this.nextPage) : [];
+    this.dataGrid = (this.characterShow) ? this.characterShow.slice(this.currentPage, this.nextPage) : [];
+    this.state.setData({ search: false, showLoading: false });
 	}
 
 	onNextPage() {
@@ -168,5 +168,9 @@ export class CharactersComponent implements OnInit {
 		this.currentPage = 0;
 		this.nextPage = 10;
 		this.setDataGrid();
-	}
+  }
+  
+  goBack(){
+    this.router.navigate(['home']);
+  }
 }

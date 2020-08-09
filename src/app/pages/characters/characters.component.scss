@@ -1,11 +1,14 @@
 .header {
-    height: 20%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: var(--size-20);
     color: var(--color-white);
+    &__back{
+        width: 100%;
+        text-align: left;
+    }
     &__title {
         width: 80%;
         margin-bottom: var(--size-16);
@@ -35,8 +38,6 @@
     }
 }
 .content {
-    min-width: 95%;
-    height: 70%;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -44,7 +45,6 @@
     padding: var(--size-20);
     background: var(--color-grey);
     color: var(--color-white);
-    overflow-y: scroll;
     z-index: 9999;
     position: relative;
     bottom: 0px;

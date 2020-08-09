@@ -1,4 +1,7 @@
 <div class="header">
+    <div class="header__back">
+        <i class="fa fa-arrow-left fa-2x" aria-hidden="true" (click)="goBack()"></i>
+    </div>
     <div class="header__title">
         {{film?.name}} {{translate.translate("CHARACTERS")}}
     </div>
