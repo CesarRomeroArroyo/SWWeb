@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { StateApp } from 'src/app/core/services/state.service';
 import { FilmInterface } from 'src/app/interface/film.interface';
 import { TranslateService } from 'src/app/core/services/translate.service';
@@ -11,10 +11,11 @@ import { CharacterInterface } from 'src/app/interface/character.interface';
 	templateUrl: './characters.component.html',
 	styleUrls: ['./characters.component.scss']
 })
-export class CharactersComponent implements OnInit, OnChanges {
+export class CharactersComponent implements OnInit{
 	film: FilmInterface;
 	characters: CharacterInterface[] = [];
 	characterShow: CharacterInterface[] = [];
+	dataGrid: CharacterInterface[] = [];
 
 	films: FilmInterface[] = [];
 	filmSelected: FilmInterface = {
@@ -51,13 +52,6 @@ export class CharactersComponent implements OnInit, OnChanges {
 		this.init();
 	}
 
-	ngOnChanges(changes: SimpleChanges): void {
-		this.pageRegister = 10;
-		this.registerNumber = (this.characterShow) ? this.characterShow.length : 0;
-		this.pagesNumber = Math.ceil((this.registerNumber / 10));
-		this.setDataGrid(this.characters);
-	}
-
 	init() {
 		this.state.setData({ search: true, showLoading: true });
 		this.state.getObservable().subscribe((data: any) => {
@@ -70,7 +64,8 @@ export class CharactersComponent implements OnInit, OnChanges {
 				this.router.navigate(["home"]);
 			}
 		});
-		this.uploadCombo();
+    this.uploadCombo();
+    
 	}
 
 	uploadCombo() {
@@ -93,7 +88,7 @@ export class CharactersComponent implements OnInit, OnChanges {
 			this.characters = chars;
 			this.characterShow = this.characters;
 			this.state.setData({ search: false, showLoading: false });
-			this.setDataGrid(this.characters);
+      this.setDataGrid();
 		});
 	}
 
@@ -101,9 +96,11 @@ export class CharactersComponent implements OnInit, OnChanges {
 		this.state.setData({ search: false, showModal: true, crawl: film.opening_crawl });
 	}
 
-	setDataGrid(data: any[]) {
-		console.log(data);
-		this.characterShow = (data) ? data.slice(this.currentPage, this.nextPage) : [];
+	setDataGrid() {
+    this.pageRegister = 10;
+    this.registerNumber = (this.characterShow) ? this.characterShow.length : 0;
+    this.pagesNumber = Math.ceil((this.registerNumber / 10));
+		this.dataGrid = (this.characterShow) ? this.characterShow.slice(this.currentPage, this.nextPage) : [];
 		console.log(this.characterShow);
 	}
 
@@ -114,7 +111,7 @@ export class CharactersComponent implements OnInit, OnChanges {
 			this.actualPage++;
 			this.currentPage = this.currentPage + 10;
 			this.nextPage = this.nextPage + 10;
-			this.setDataGrid(this.characterShow);
+			this.setDataGrid();
 		}
 	}
 
@@ -125,7 +122,7 @@ export class CharactersComponent implements OnInit, OnChanges {
 			this.actualPage--;
 			this.currentPage = this.currentPage - 10;
 			this.nextPage = this.nextPage - 10;
-			this.setDataGrid(this.characterShow);
+			this.setDataGrid();
 		}
 	}
 
@@ -139,7 +136,7 @@ export class CharactersComponent implements OnInit, OnChanges {
 		} else {
 			this.characterShow = this.characters;
 		}
-
+    this.initializateGrid();
 	}
 
 	searchGender(searchText: string) {
@@ -151,22 +148,25 @@ export class CharactersComponent implements OnInit, OnChanges {
 			});
 		} else {
 			this.characterShow = this.characters;
-		}
+    }
+    this.initializateGrid();
 	}
 
 	searchFilms(e) {
 		if (e.name == this.translate.translate("SELECT_FILM")) {
 			this.characterShow = this.characters;
-			this.setDataGrid(this.characters);
 		} else {
-			let filter = this.characters.filter((result: any) => {
+			this.characterShow = this.characters.filter((result: any) => {
 				return result.filmFilter.indexOf(e.url) >= 0;
 			});
-			console.log(filter);
-			this.actualPage = 1;
-			this.currentPage = 0;
-			this.nextPage = 10;
-			this.setDataGrid(filter)
-		}
-	}
+    }
+    this.initializateGrid();
+  }
+  
+  initializateGrid(){
+    this.actualPage = 1;
+    this.currentPage = 0;
+    this.nextPage = 10;
+    this.setDataGrid();
+  }
 }

@@ -16,7 +16,12 @@
 
 </div>
 <div class="content">
-    <div class="content__film" *ngFor="let char of characterShow">
+    <div class="paginatorContainer">
+        <i style="font-size: 20px; cursor: pointer;" class="fa fa-angle-left pageLeft" (click)="onPreviusPage()"></i>
+        {{actualPage}} / {{pagesNumber}}
+        <i style="font-size: 20px; cursor: pointer;" class="fa fa-angle-right pageRight" (click)="onNextPage()"></i>
+    </div>
+    <div class="content__film" *ngFor="let char of dataGrid">
         <div class="content__film__data">
             <div class="content__film__data__info">
                 <div class="content__film__data__info__name">
