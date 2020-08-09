@@ -99,8 +99,8 @@ export class CharactersComponent implements OnInit {
 		this.pageRegister = 10;
 		this.registerNumber = (this.characterShow) ? this.characterShow.length : 0;
 		this.pagesNumber = Math.ceil((this.registerNumber / 10));
-    this.dataGrid = (this.characterShow) ? this.characterShow.slice(this.currentPage, this.nextPage) : [];
-    this.state.setData({ search: false, showLoading: false });
+		this.dataGrid = (this.characterShow) ? this.characterShow.slice(this.currentPage, this.nextPage) : [];
+		this.state.setData({ search: false, showLoading: false });
 	}
 
 	onNextPage() {
@@ -128,6 +128,7 @@ export class CharactersComponent implements OnInit {
 	searchEyes(searchText: string) {
 		if (searchText.length > 0) {
 			this.searchGenderText = '';
+			this.filmSelected = this.films[0];
 			searchText = searchText.toLowerCase();
 			this.characterShow = this.characters.filter(result => {
 				return result.eye_color.toLowerCase().indexOf(searchText) >= 0;
@@ -141,6 +142,7 @@ export class CharactersComponent implements OnInit {
 	searchGender(searchText: string) {
 		if (searchText.length > 0) {
 			this.searchEyesText = '';
+			this.filmSelected = this.films[0];
 			searchText = searchText.toLowerCase();
 			this.characterShow = this.characters.filter(result => {
 				return result.gender.toLowerCase() == (searchText);
@@ -153,6 +155,8 @@ export class CharactersComponent implements OnInit {
 	}
 
 	searchFilms(e) {
+		this.searchGenderText = '';
+		this.searchEyesText = '';
 		if (e.name == this.translate.translate("SELECT_FILM")) {
 			this.characterShow = this.characters;
 		} else {

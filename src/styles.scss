@@ -38,10 +38,10 @@ input:not([type="button"]):not([type="submit"]):not([type="checkbox"]) {
 	border: 1px solid #a3a3a3;
 	padding-left: 10px;
 	padding-right: 10px;
-    color: black;
-    border-radius: 20px;
-    background: rgba($color: #ffffff, $alpha: 0.5);
-    color: white;
+  color: black;
+  border-radius: 20px;
+  background: rgba($color: #ffffff, $alpha: 0.5);
+  color: white;
 }
 
 input[type="checkbox"] {
@@ -68,12 +68,15 @@ select {
 	width: 100%;
 	border: 0px;
 	height: 35px;
-	border: 1px solid #a3a3a3;
+  border: 1px solid #a3a3a3;
+  background: rgba($color: #ffffff, $alpha: 0.5);
+  border-radius: 20px;
 	padding-left: 10px;
 	padding-right: 10px;
 	font-family: "Roboto Condensed", sans-serif;
-    color: black;
-    margin-bottom: 10px;
+  color: black;
+  margin-bottom: 10px;
+  color: white;
 }
 
 @keyframes crawl {
