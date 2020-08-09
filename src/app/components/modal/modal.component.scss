@@ -1,7 +1,22 @@
+.modal{
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000000, $alpha: 0.5);
+    z-index: 999999999;
+    position: absolute;
+    top: 0px;
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
 .crawl{
     width: 50%;
     z-index: 99999;
-    font-size: var(--size-12);
+    font-size: var(--size-18);
     height: auto;
     position: relative;
     overflow: hidden;

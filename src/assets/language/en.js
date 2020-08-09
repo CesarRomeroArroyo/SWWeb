@@ -8,6 +8,7 @@
     "COLOR_EYES": "Eyes color",
     "GENDER": "Gender",
     "FILMS": "Films",
-    "ASSOCIATED_MOVIE": "Associated Movie"
- 
+    "ASSOCIATED_MOVIE": "Associated Movie",
+    "SELECT_FILM": "Select a Film",
+    "LOADING": "Loading"
 }

@@ -1,0 +1,14 @@
+.modal{
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000000, $alpha: 1);
+    z-index: 999999999;
+    position: absolute;
+    top: 0px;
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--size-20);
+    font-weight: 600;
+}

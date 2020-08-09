@@ -23,8 +23,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.state.setData({showLoading:true});
     this.initTranslation();
-    this.api.getFilms().subscribe(resp => this.films = resp);
+    this.api.getFilms().subscribe((resp) => {
+      this.films = resp;
+      this.state.setData({showLoading:false});
+    });
   }
 
   async initTranslation() {

@@ -21,7 +21,6 @@ export class FilmComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.film);
   }
 
   goCharacter(film){
