@@ -37,11 +37,10 @@ export class CharactersComponent implements OnInit {
   }
 
   init() {
-    this.state.setData({ search: true });
+    this.state.setData({ search: true, showLoading: true });
     this.state.getObservable().subscribe((data: any) => {
       if (data.film) {
         this.film = data.film;
-        console.log(this.film);
         if (data.search)
           this.getCharacters();
       }
@@ -56,7 +55,7 @@ export class CharactersComponent implements OnInit {
     this.api.getFilms().subscribe(result => {
       this.films = result;
       this.films.unshift({
-        name: 'Seleccionar pelicula',
+        name: this.translate.translate("SELECT_FILM"),
         characters: [],
         director: '',
         episode: 0,
@@ -68,15 +67,14 @@ export class CharactersComponent implements OnInit {
 
   getCharacters() {
     this.api.getCharacters(this.film.characters).subscribe((chars) => {
-      console.log(chars);
       this.characters = chars;
-      this.characterTem = chars
+      this.characterTem = chars;
+      this.state.setData({ search: false, showLoading: false });
     });
   }
 
   showCrawl(film) {
-    this.state.setData({ search: false });
-    this.state.setData({ showModal: true, crawl: film.opening_crawl });
+    this.state.setData({ search: false, showModal: true, crawl: film.opening_crawl });
   }
 
   searchEyes(searchText: string) {

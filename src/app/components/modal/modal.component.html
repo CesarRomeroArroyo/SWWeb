@@ -1,3 +1,7 @@
-<div class="modal">
-    
+<div class="modal" *ngIf="show" (click)="hideModal()">
+    <div class="crawl">
+        <div class="crawl__text">
+            {{crawl}}
+        </div>
+    </div>
 </div>

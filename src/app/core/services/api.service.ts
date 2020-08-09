@@ -38,7 +38,6 @@ export class ApiService {
 				}
 				return 0;
 			}); 
-			console.log(films);
 			return films;
 		}));
 	}
@@ -59,7 +58,6 @@ export class ApiService {
 					filmFilter: element.films
 				}
 			});
-			console.log(characters);
 			return characters;
 		})); 
 	}

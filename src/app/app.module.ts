@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 import { environment } from '../environments/environment';
 import { FormsModule } from "@angular/forms";
+import { ComponentsModule } from './components/components.module';
 
 const secretKey = environment.secretKey;
 
@@ -58,7 +59,8 @@ Storage.prototype.getItem = function (key) {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
