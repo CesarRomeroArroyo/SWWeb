@@ -26,7 +26,6 @@ export class CharactersComponent implements OnInit {
     this.state.getObservable().subscribe((data: any) => {
       if(data.film){
         this.film = data.film;
-        console.log(this.film);
         if(data.search)
           this.getCharacters();
       }
@@ -38,15 +37,14 @@ export class CharactersComponent implements OnInit {
 
   getCharacters(){
     this.api.getCharacters(this.film.characters).subscribe((chars)=> {
-      console.log(chars);
       this.characters = chars;
     });
   }
 
   showCrawl(film){
     this.state.setData({search: false});
-    this.state.setData({showModal: true});
-    this.state.setData({crawl: film.opening_crawl});
+    this.state.setData({showModal: true, crawl: film.opening_crawl});
+    
   }
   
 
