@@ -4,4 +4,5 @@ export interface FilmInterface {
     director: string,
     characters: string[],
     opening_crawl: string,
+    url: string
 }

@@ -13,8 +13,8 @@ import { CharacterInterface } from 'src/app/interface/character.interface';
 })
 export class CharactersComponent implements OnInit {
   film: FilmInterface;
-  characters: CharacterInterface[];
-  characterTem: CharacterInterface[];
+  characters: CharacterInterface[] = [];
+  characterShow: CharacterInterface[] = [];
 
   films: FilmInterface[] = [];
   filmSelected: FilmInterface = {
@@ -22,8 +22,12 @@ export class CharactersComponent implements OnInit {
     characters: [],
     director: '',
     episode: 0,
-    opening_crawl: ''
+    opening_crawl: '',
+    url: ''
   }
+
+  searchEyesText: string = '';
+  searchGenderText: string = '';
 
   constructor(
     public translate: TranslateService,
@@ -59,7 +63,8 @@ export class CharactersComponent implements OnInit {
         characters: [],
         director: '',
         episode: 0,
-        opening_crawl: ''
+        opening_crawl: '',
+        url: ''
       });
       this.filmSelected = this.films[0];
     });
@@ -68,7 +73,7 @@ export class CharactersComponent implements OnInit {
   getCharacters() {
     this.api.getCharacters(this.film.characters).subscribe((chars) => {
       this.characters = chars;
-      this.characterTem = chars;
+      this.characterShow = this.characters;
       this.state.setData({ search: false, showLoading: false });
     });
   }
@@ -78,21 +83,37 @@ export class CharactersComponent implements OnInit {
   }
 
   searchEyes(searchText: string) {
-    searchText = searchText.toLowerCase();
-    this.characterTem = this.characters.filter(result => {
-      return result.eye_color.toLowerCase().includes(searchText);
-    });
-    console.log(this.characters);
+    if (searchText.length > 0) {
+      this.searchGenderText = '';
+      searchText = searchText.toLowerCase();
+      this.characterShow = this.characters.filter(result => {
+        return result.eye_color.toLowerCase().indexOf(searchText) >= 0;
+      });
+    } else {
+      this.characterShow = this.characters;
+    }
+
   }
 
   searchGender(searchText: string) {
-    searchText = searchText.toLowerCase();
-    this.characterTem = this.characters.filter(result => {
-      return result.gender.toLowerCase().includes(searchText);
-    });
-    console.log(this.characters);
+    if (searchText.length > 0) {
+      this.searchEyesText = '';
+      searchText = searchText.toLowerCase();
+      this.characterShow = this.characters.filter(result => {
+        return result.gender.toLowerCase().indexOf(searchText) >= 0;
+      });
+    } else {
+      this.characterShow = this.characters;
+    }
   }
 
-  searchFilms(e) { console.log(e); }
-
+  searchFilms(e) {
+    if (e.name == this.translate.translate("SELECT_FILM")) {
+      this.characterShow = this.characters;
+    } else {
+      this.characterShow = this.characters.filter((result: any) => {
+        return result.filmFilter.indexOf(e.url) >= 0;
+      });
+    }
+  }
 }

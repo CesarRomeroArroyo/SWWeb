@@ -26,7 +26,8 @@ export class ApiService {
 					episode: element.episode_id,
 					director: element.director,
 					characters: element.characters,
-					opening_crawl: element.opening_crawl
+					opening_crawl: element.opening_crawl,
+					url: element.url
 				}
 			});
 			films.sort(function (prev, next) {
@@ -74,7 +75,8 @@ export class ApiService {
 					name: element.title,
 					episode: element.episode_id,
 					director: element.director,
-					opening_crawl: element.opening_crawl
+					opening_crawl: element.opening_crawl,
+					url: element.url
 				}
 			});
 			// console.log(films);
