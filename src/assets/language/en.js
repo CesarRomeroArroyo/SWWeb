@@ -4,6 +4,9 @@
     "EPISODE": "Episode",
     "DIRECTOR": "Director",
     "CHARACTERS": "Characters",
-    "NOFOUND": "No found"
+    "NOFOUND": "No found",
+    "COLOR_EYES": "Eyes color",
+    "GENDER": "Gender",
+    "FILMS": "Films"
  
 }

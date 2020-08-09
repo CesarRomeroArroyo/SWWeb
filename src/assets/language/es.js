@@ -4,5 +4,8 @@
     "EPISODE": "Episodio",
     "DIRECTOR": "Director",
     "CHARACTERS": "Actores",
-    "NOFOUND": "No encontrada"
+    "NOFOUND": "No encontrada",
+    "COLOR_EYES": "Color de ojos",
+    "GENDER": "Genero",
+    "FILMS": "Peliculas"
 }

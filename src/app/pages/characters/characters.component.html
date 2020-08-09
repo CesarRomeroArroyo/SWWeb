@@ -2,7 +2,16 @@
     <div class="header__title">
         {{film.name}}
     </div>
-    
+    <div class="header__search">
+        <input type="search" name="search" placeholder="{{translate.translate('COLOR_EYES')}}" #search1
+            (keyup)="searchEyes(search1.value)">
+        <input type="search" name="search" placeholder="{{translate.translate('GENDER')}}" #search2
+            (keyup)="searchGender(search2.value)">
+        <select [(ngModel)]="filmSelected" (change)="searchFilms(filmSelected)">
+            <option *ngFor="let film of films" [ngValue]="film">{{film.name}}</option>
+        </select>
+    </div>
+
 </div>
 <div class="content">
     <div class="content__film" *ngFor="let char of characters">
